@@ -6,6 +6,7 @@
 
 /* Global base styles */
 body {
+    color-scheme: dark;
     font-family: 'Times New Roman', Georgia, serif;
     ;
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -86,12 +87,6 @@ h2 {
     padding: 1rem;
 }
 
-.aside .error {
-    color: var(--red-info);
-    font-size: smaller;
-    display: none
-}
-
 
 .form input,
 label {
@@ -104,12 +99,12 @@ label {
     width: 95%;
 }
 
-      .actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 10px;
-      }
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
 
 
 /* ✅ Each input group (label + input + error text) */
@@ -259,7 +254,18 @@ button:hover {
 .signatur {
     grid-area: signature;
     align-self: end;
-    min-height: 3.5rem;
+    width: 100%;
+    min-height: 3rem;
+}
+
+.signatur img {
+    display: block;
+    width: 100%;
+    max-width: 18rem;
+    height: 4.5rem;
+    margin-inline: auto;
+    object-fit: contain;
+    object-position: center bottom;
 }
 
 .teacher {
@@ -267,6 +273,33 @@ button:hover {
     border-top: 2px solid var(--certificate-border);
     text-align: center;
 }
+
+.row .error {
+    display: none;
+}
+
+.row.has-error .error {
+    display: block;
+    color: var(--red-info);
+
+}
+
+.row.has-error input {
+    border-color: var(--red-border);
+
+}
+
+#btnPrint:enabled {
+    background-color: #267346;
+    color: white;
+    cursor: pointer;
+}
+
+#btnPrint:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
 
 @media (max-width: 55rem) {
     .container {
@@ -345,6 +378,10 @@ button:hover {
         border-radius: 4mm;
     }
 
+    .aside {
+        display: none;
+    }
+
     .second-border {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -392,8 +429,15 @@ button:hover {
     }
 
     .signatur {
+        width: 100%;
         min-height: 13mm;
         background: transparent;
+    }
+
+    .signatur img {
+        width: 100%;
+        max-width: 70mm;
+        height: 18mm;
     }
 
     .teacher {

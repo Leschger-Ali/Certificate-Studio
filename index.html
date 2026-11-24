@@ -49,7 +49,7 @@
 
             <div class="row">
                 <label for="issuedDateInput">Issued Date</label>
-                <input type="date" name="issuedDate" id="issuedDateInput" required>
+                <input  type="date" name="issuedDate" id="issuedDateInput" required>
                 <p class="error">Please select an issued date.</p>
 
             </div>
@@ -67,10 +67,8 @@
             <div class="actions">
                 <button id="btnFillDemo">Fill Demo</button>
                 <button id="btnReset">Reset</button>
-                <button id="btnPrint" disabled>Print as PDF</button>
+                <button id="btnPrint" class="print" disabled>Print as PDF</button>
             </div>
-
-            <p class="error">❌ Please fix the highlighted fields to enable printing</p>
 
 
 
@@ -81,7 +79,7 @@
                 <div class="second-border">
                     <div class="issued-date">
                         <p>Issued Date</p>
-                        <p class="issuedDate" id="issuedDate">1232142</p>
+                        <time class="issuedDate" id="issuedDate">1232142</time>
                     </div>
                     <div class="certificate-serial">
                         <p >Certificate Serial</p>
@@ -93,9 +91,9 @@
                     <div class="certificate-info">
                         <h2>Certificate of Completion</h2>
                         <p>This is proudly presented to</p>
-                        <h2 id="student" class="student">Mohammed Abu-Hadhoud</h2>
+                        <h2 id="student" class="student">Student Name</h2>
                         <p>for successfully completing</p>
-                        <h2 id="course" class="course">Goal Setting: Crafting and Achieving Your Objectives</h2>
+                        <h2 id="course" class="course">Course Name</h2>
                     </div>
                     <div class="certified-logo">
                         <img src="Typografischer Zertifikatsstempel der Morgenstern Akademie.png" alt="Certified Logo">
@@ -103,9 +101,11 @@
                     <div class="web">
                         <a href="#">MorgensternAkademie</a>
                     </div>
-                    <div class="signatur"></div>
+                    <div class="signatur" id="signatur">
+                        <img src="Nachtblaue Signatur der Morgenstern-Akademie.png" alt="signatur" id="morgenStrenImg">
+                    </div>
                     <div class="teacher">
-                        <p class="teacherName">Lawin Löwe</p>
+                        <p class="teacherName" id="teacherName">Teacher Name</p>
                     </div>
 
 
