@@ -1,0 +1,408 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global base styles */
+body {
+    font-family: 'Times New Roman', Georgia, serif;
+    ;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    height: 100vh;
+    background-color: var(--page-bg);
+}
+
+/* Main heading scale */
+h1 {
+    font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+    /* Scales between 28px and 44px */
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* Subheading scale */
+h2 {
+    font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
+    /* Scales between 21.6px and 32px */
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+:root {
+    /* Page and sidebar */
+    --page-bg: hsl(226, 49%, 8%);
+    --sidebar-bg: hsl(225, 29%, 14%);
+    --text-primary: hsl(220, 30%, 96%);
+    --text-secondary: hsl(220, 18%, 76%);
+
+    /* Form fields */
+    --input-bg: hsl(225, 28%, 10%);
+    --input-border: hsl(220, 18%, 46%);
+    --input-placeholder: hsl(220, 15%, 66%);
+    --focus-ring: hsl(40, 65%, 66%);
+    --red-info: hsl(0, 100%, 85%);
+
+    /* Print button */
+    --print-button-bg: hsl(214, 41%, 29%);
+    --print-button-hover-bg: hsl(214, 43%, 37%);
+    --print-button-text: hsl(0, 0%, 100%);
+
+    /* Certificate */
+    --certificate-bg: hsl(0, 0%, 100%);
+    --certificate-heading: hsl(220, 45%, 19%);
+    --certificate-text: hsl(220, 18%, 30%);
+    --certificate-border: hsl(40, 39%, 47%);
+    --certificate-gold-text: hsl(40, 55%, 32%);
+
+    /* borders */
+    --aside-border: hsl(223, 16%, 22%);
+    --red-border: hsl(359, 51%, 52%);
+}
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) minmax(0, 2fr);
+    align-items: start;
+    gap: clamp(1rem, 3vw, 3rem);
+    min-height: 100vh;
+    padding: clamp(0.75rem, 2vw, 2rem);
+
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-self: stretch;
+    background-color: var(--sidebar-bg);
+    border: 2px solid var(--aside-border);
+    border-radius: 1rem;
+    color: var(--text-primary);
+    padding: 1rem;
+}
+
+.aside .error {
+    color: var(--red-info);
+    font-size: smaller;
+    display: none
+}
+
+
+.form input,
+label {
+    display: block;
+}
+
+.form input {
+    border: 2px solid var(--aside-border);
+    background-color: var(--input-bg);
+    width: 95%;
+}
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+
+/* ✅ Each input group (label + input + error text) */
+.row {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+label {
+    opacity: 0.9;
+}
+
+/* ✅ Shared styles for inputs */
+input,
+textarea {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.35);
+    color: #e9eefc;
+    padding: 10px 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    /* ✅ allow user to resize vertically only */
+    min-height: 70px;
+}
+
+/* ✅ Highlight focused input */
+input:focus,
+textarea:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ✅ File input looks better with padding too */
+input[type="file"] {
+    padding: 10px 12px;
+}
+
+
+button {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    color: #e9eefc;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: 650;
+    letter-spacing: 0.2px;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+.main {
+    min-width: 0;
+    padding: 0.5rem;
+    color: var(--certificate-text);
+    background-color: var(--certificate-bg);
+    border: 2px solid var(--aside-border);
+    border-radius: 1rem;
+}
+
+.first-border {
+    border: 4px solid var(--certificate-border);
+    border-radius: 1rem;
+    padding: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+.second-border {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+        "date  .     serial"
+        "logo  logo  logo"
+        "info  info  info"
+        "seal  web   signature"
+        "seal  web   teacher";
+    gap: 0.5rem 1rem;
+    padding: clamp(0.75rem, 2vw, 2rem);
+    border: 2px solid var(--certificate-border);
+    border-radius: 1rem;
+}
+
+.issued-date {
+    grid-area: date;
+}
+
+.certificate-serial {
+    grid-area: serial;
+    text-align: right;
+}
+
+.logo {
+    grid-area: logo;
+    justify-self: center;
+    width: min(55%, 22rem);
+}
+
+.logo img,
+.certified-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.certificate-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-inline: 5%;
+    margin-block: 0.5rem 2rem;
+    overflow-wrap: anywhere;
+    text-align: center;
+    margin-bottom: 4rem;
+
+}
+
+.certificate-info h2 {
+    color: var(--certificate-gold-text);
+}
+
+.certified-logo {
+    grid-area: seal;
+    align-self: end;
+    width: min(100%, 9rem);
+}
+
+.web {
+    grid-area: web;
+    align-self: end;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.web a {
+    color: var(--certificate-heading);
+}
+
+.signatur {
+    grid-area: signature;
+    align-self: end;
+    min-height: 3.5rem;
+}
+
+.teacher {
+    grid-area: teacher;
+    border-top: 2px solid var(--certificate-border);
+    text-align: center;
+}
+
+@media (max-width: 55rem) {
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 34rem) {
+    .second-border {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "date  serial"
+            "logo  logo"
+            "info  info"
+            "seal  signature"
+            "seal  teacher"
+            "web   web";
+    }
+
+    .logo {
+        width: 75%;
+    }
+
+    .certificate-info {
+        padding-inline: 0;
+    }
+}
+
+
+@page {
+    size: A4 landscape;
+    margin: 10mm;
+}
+
+@media print {
+    body {
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        background: white;
+        font-size: 11pt;
+        line-height: 1.35;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .certificate-info {
+        text-align: center;
+    }
+
+
+    .container {
+        display: block;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .main {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: white;
+    }
+
+    .first-border {
+        display: grid;
+        min-height: 189mm;
+        margin: 0;
+        padding: 4mm;
+        border: 1mm solid var(--certificate-border);
+        border-radius: 4mm;
+    }
+
+    .second-border {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-areas:
+            "date  .     serial"
+            "logo  logo  logo"
+            "info  info  info"
+            "seal  web   signature"
+            "seal  web   teacher";
+        gap: 2mm 5mm;
+        margin: 0;
+        padding: 6mm 8mm;
+        border: 0.4mm solid var(--certificate-border);
+        border-radius: 3mm;
+    }
+
+    .logo {
+        width: 72mm;
+        justify-self: center;
+    }
+
+    .certificate-info {
+        align-self: center;
+        gap: 2mm;
+        margin: 0;
+        padding-inline: 5%;
+    }
+
+    .certificate-info h2 {
+        font-size: 19pt;
+        line-height: 1.2;
+    }
+
+    .certificate-info .student {
+        font-size: 24pt;
+    }
+
+    .certificate-info .course {
+        font-size: 17pt;
+    }
+
+    .certified-logo {
+        width: 34mm;
+    }
+
+    .signatur {
+        min-height: 13mm;
+        background: transparent;
+    }
+
+    .teacher {
+        padding-top: 1.5mm;
+        border-top: 0.4mm solid var(--certificate-border);
+    }
+
+    .web a {
+        color: var(--certificate-heading);
+        text-decoration: none;
+    }
+}

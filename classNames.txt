@@ -1,0 +1,16 @@
+in The Certificate
+
+issuedDate
+serial-nr      
+student
+course
+teacherName
+
+in The Aside
+
+studentName
+courseName
+instructorName
+signatureImage
+issuedDateInput
+certificateSerial
